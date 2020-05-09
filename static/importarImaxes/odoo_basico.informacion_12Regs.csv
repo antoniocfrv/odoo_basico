@@ -1,0 +1,13 @@
+id,name,descripcion,alto_en_cms,ancho_en_cms,data_hora,longo_en_cms,peso,sexo_traducido,autorizado,data,gasto,gasto_en_euros,moeda_id,moeda_euro_id
+odoo_basico.odoo_basico informacion 6,Rexistro 6,Descripción Rexistro 6,6,4,2020-04-08 14:59:43,4,4.0,Muller,False,2020-10-10,,,,EUR
+odoo_basico.odoo_basico informacion 5,Rexistro 5,Descripción Rexistro 5,6,4,2020-04-08 14:59:43,4,4.0,Muller,False,2020-10-10,,,,EUR
+odoo_basico.odoo_basico informacion 4,Rexistro 4,Descripción Rexistro 4,6,4,2020-04-08 14:59:43,4,4.0,Muller,True,2020-10-10,,,,EUR
+odoo_basico.odoo_basico informacion 3,Rexistro 3,Descripción Rexistro 3,6,3,2020-04-08 14:59:43,3,3.0,Home,True,2020-10-10,,,,EUR
+odoo_basico.odoo_basico informacion 2,Rexistro 2,Descripción Rexistro 2,6,2,2020-04-08 14:59:43,2,2.0,Home,True,2020-10-10,,,,EUR
+odoo_basico.odoo_basico informacion 1,Rexistro 1,Descripción Rexistro 1,6,1,2020-04-08 14:59:43,1,1.0,Home,True,2020-10-10,,,,EUR
+,Rexistro 12,Descripción Rexistro 12,4,4,2020-04-08 14:59:43,4,4.0,Muller,False,2020-10-10,,,,EUR
+,Rexistro 11,Descripción Rexistro 11,4,4,2020-04-08 14:59:43,4,4.0,Muller,False,2020-10-10,,,,EUR
+,Rexistro 10,Descripción Rexistro 10,4,4,2020-04-08 14:59:43,4,4.0,Muller,True,2020-10-10,,,,EUR
+,Rexistro 9,Descripción Rexistro 9,3,3,2020-04-08 14:59:43,3,3.0,Home,True,2020-10-10,,,,EUR
+,Rexistro 8,Descripción Rexistro 8,2,2,2020-04-08 14:59:43,2,2.0,Home,True,2020-10-10,,,,EUR
+,Rexistro 7,Descripción Rexistro 7,1,1,2020-04-08 14:59:43,1,1.0,Home,True,2020-10-10,,,,EUR
