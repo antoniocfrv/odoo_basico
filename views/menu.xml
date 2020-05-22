@@ -1,9 +1,10 @@
 <odoo>
   <data>
-    <menuitem id="main_odoo_basico" name="Menú Nivel 0"/>
-    <menuitem id="exemplos_menu" name="Menú Nivel 1" parent="main_odoo_basico"/>
+    <menuitem id="main_odoo_basico" name="Menú Nivel 0" action="inicial_list_action"/>
+    <menuitem id="exemplos_menu" name="Menú Nivel 1" parent="main_odoo_basico" />
     <menuitem id="informacion_menu" name="Menú Nivel 2 Información" parent="exemplos_menu" action="informacion_list_action"/>
     <menuitem id="pedido_menu" name="Menú Nivel 2 Pedido" parent="exemplos_menu" action="pedido_list_action"/>
+    <menuitem id="suceso_menu" name="Menú Nivel 2 Suceso" parent="exemplos_menu" action="suceso_list_action"/>
        <!-- explicit list view definition -->
     <!--
     <record model="ir.ui.view" id="odoo_basico.list">

@@ -24,6 +24,8 @@
     # always loaded
     'data': [
         'accions_planificadas/accion_planificada.xml',
+        'views/inicial.xml',
+        'views/suceso.xml',
         #'views/persoa.xml',
         'views/informacion.xml',
         'views/pedido.xml',
