@@ -3,7 +3,8 @@
 from odoo import models, fields, api
 
 class accion_planificada (models.Model):
-    _inherit = "account.invoice"
+    _inherit = "account.invoice" # Version Odoo 12
+    #_inherit = "account.move" # Version Odoo 13
 
     @api.model
     def listado_facturas(self):

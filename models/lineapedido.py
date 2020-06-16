@@ -11,4 +11,4 @@ class lineapedido (models.Model):
     # Os campos Many2many crean unha táboa na BD
     informacion_ids = fields.Many2many("odoo_basico.informacion",string="Rexistro de Información",
                                        relation="odoo_basico_lineapedido_informacion",
-                                       column1="lineapedido_id",column2="informacion_id",ondelete="set null")
+                                       column1="lineapedido_id",column2="informacion_id")
