@@ -34,7 +34,7 @@
         'reports/report_header.xml',
         'reports/report_informacion.xml',
         'views/menu.xml',
-        'security/xestion_usuarios.xml',
+        #'security/xestion_usuarios.xml', #comentar e descomentar en función VersiónBasica ou VersionXestion_usuarios
         # versionXestion_usuarios:Para xestionar que os usuarios teñan os permisos por grupos (escritura,lectura)
         # Copiar ir.model.accessVersionXestion_usuarios como ir.model.access.csv e actualizar o módulo
         'security/ir.model.access.csv',

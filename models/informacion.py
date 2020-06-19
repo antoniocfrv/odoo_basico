@@ -124,7 +124,8 @@ class informacion (models.Model):
 
     @api.depends('data_hora')
     def _hora_timezone_usuario(self):
-        self.actualiza_hora_timezone_usuario_dende_boton_e_apidepends()
+        for rexistro in self:
+            rexistro.actualiza_hora_timezone_usuario_dende_boton_e_apidepends()
 
     def actualiza_hora_actual_UTC(self): # Esta función é chamada dende un boton de informacion.xml e dende _hora_actual
         for rexistro in self:
@@ -133,7 +134,8 @@ class informacion (models.Model):
 
     @api.depends('data_hora')
     def _hora_actual(self):
-        self.actualiza_hora_actual_UTC()
+        for rexistro in self:
+            rexistro.actualiza_hora_actual_UTC()
 
     def ver_contexto(self): # Este método é chamado dende un botón de informacion.xml
         for rexistro in self: #Ao usar warning temos que importar a libreria from odoo.exceptions import Warning

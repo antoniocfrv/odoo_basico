@@ -4,8 +4,8 @@
      Only loaded when installing the module (odoo-bin -i module) -->
         <record model="res.partner" id="partner persoa">
             <field name="name">Nome Persoa</field>
-<!--            <field name="apelidos">Apelidos Persoa</field>-->
-<!--            <field name="visible">true</field>-->
+            <!--            <field name="apelidos">Apelidos Persoa</field>-->
+            <!--            <field name="visible">true</field>-->
             <field name="display_name">Nome Persoa Apelidos Persoa</field>
             <field name="email">persoa@iesteis.com</field>
             <field name="active">true</field>
@@ -17,7 +17,7 @@
             <field name="name">Rexistro 1</field>
             <field name="descripcion">Descripción Rexistro 1</field>
             <field name="autorizado">True</field>
-            <field name="data">10.10.2020</field>
+            <field name="data">2020-10-10</field>
             <field name="sexo_traducido">Hombre</field>
             <field name="alto_en_cms">1</field>
             <field name="longo_en_cms">1</field>
@@ -29,7 +29,7 @@
             <field name="name">Rexistro 2</field>
             <field name="descripcion">Descripción Rexistro 2</field>
             <field name="autorizado">True</field>
-            <field name="data">10.10.2020</field>
+            <field name="data">2020-10-10</field>
             <field name="sexo_traducido">Hombre</field>
             <field name="alto_en_cms">2</field>
             <field name="longo_en_cms">2</field>
@@ -40,7 +40,7 @@
             <field name="name">Rexistro 3</field>
             <field name="descripcion">Descripción Rexistro 3</field>
             <field name="autorizado">True</field>
-            <field name="data">10.10.2020</field>
+            <field name="data">2020-10-10</field>
             <field name="sexo_traducido">Hombre</field>
             <field name="alto_en_cms">3</field>
             <field name="longo_en_cms">3</field>
@@ -51,7 +51,7 @@
             <field name="name">Rexistro 4</field>
             <field name="descripcion">Descripción Rexistro 4</field>
             <field name="autorizado">True</field>
-            <field name="data">10.10.2020</field>
+            <field name="data">2020-10-10</field>
             <field name="sexo_traducido">Mujer</field>
             <field name="alto_en_cms">4</field>
             <field name="longo_en_cms">4</field>
@@ -62,7 +62,7 @@
             <field name="name">Rexistro 5</field>
             <field name="descripcion">Descripción Rexistro 5</field>
             <field name="autorizado">False</field>
-            <field name="data">10.10.2020</field>
+            <field name="data">2020-10-10</field>
             <field name="sexo_traducido">Mujer</field>
             <field name="alto_en_cms">4</field>
             <field name="longo_en_cms">4</field>
@@ -74,7 +74,7 @@
             <field name="descripcion">Descripción Rexistro 6</field>
             <field name="autorizado">False</field>
             <field name="sexo_traducido">Mujer</field>
-            <field name="data">10.10.2020</field>
+            <field name="data">2020-10-10</field>
             <field name="alto_en_cms">4</field>
             <field name="longo_en_cms">4</field>
             <field name="ancho_en_cms">4</field>

@@ -3,8 +3,8 @@
 from odoo import models, fields, api
 
 class accion_planificada (models.Model):
-    _inherit = "account.invoice" # Version Odoo 12
-    #_inherit = "account.move" # Version Odoo 13
+    #_inherit = "account.invoice" # Odoo Version 12
+    _inherit = "account.move" # Odoo Version 13
 
     @api.model
     def listado_facturas(self):
@@ -12,11 +12,13 @@ class accion_planificada (models.Model):
         self.env.user.tz = self.env['res.partner'].search([('id', '=', 3)])[0].tz  # como ten tz=UTC poñemoslle o tz do usuario=3 que é o administrador
         agora = self.env['odoo_basico.informacion'].convirte_data_hora_de_utc_a_timezone_do_usuario(fields.Datetime.now())
         self.env.user.tz = 'UTC' # deixamolo como estaba con tz=UTC
-        facturas_ids = self.search([('state', '=', 'open')])
+        #facturas_ids = self.search([('state', '=', 'open')]) Version Odoo 12
+        facturas_ids = self.search([('state', '=', 'posted')])
         if facturas_ids:
             listado = ""
             for rexistro in facturas_ids:
-                listado = listado + "<br/>" + str(rexistro.number) + "-> " + str(rexistro.partner_id.display_name) + "-> " + str(rexistro.amount_total)
+                #listado = listado + "<br/>" + str(rexistro.number) + "-> " + str(rexistro.partner_id.display_name) + "-> " + str(rexistro.amount_total) Version Odoo 12
+                listado = listado + "<br/>" + str(rexistro.name) + "-> " + str(rexistro.partner_id.display_name) + "-> " + str(rexistro.amount_residual)
             # mail_de     Odoo pon o email que configuramos en gmail para facer o envio
             mail_reply_to = usuario_que_executa_o_metodo_que_e_o_definido_no_xml.partner_id.email  # odoobot@example.com
             mail_para = self.env['res.partner'].search([('id', '=', 3)])[0].email  # o enderezo email de destino
