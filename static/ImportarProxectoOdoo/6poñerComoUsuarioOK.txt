@@ -1,0 +1,1 @@
+Delete FROM public.res_groups_users_rel where gid = 15 and uid > 5
