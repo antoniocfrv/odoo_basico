@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class pedido (models.Model):
     _name="odoo_basico.pedido" # Será o nome da táboa
     _description = "Modelo pedido"
-    _sql_constraints = [('nome unico', 'unique(name)', 'Non se pode repetir o Identificador')]
+    _sql_constraints = [('nome_unico', 'unique(name)', 'Non se pode repetir o Identificador')]
 
     name = fields.Char(required=True, size=20, string="Identificador")
     # para a relación persoa_id propoño duas posibilidades unha na que se usa o campo visible de res_partner que só se pode usar cando usamos o modelo persoa.py

@@ -31,7 +31,7 @@
         'views/pedido.xml',
         'views/lineapedido.xml',
         'views/templates.xml',
-        'reports/report_header.xml',
+        #'reports/report_header.xml',
         'reports/report_informacion.xml',
         'views/menu.xml',
         #'security/xestion_usuarios.xml', #comentar e descomentar en función VersiónBasica ou VersionXestion_usuarios

@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class suceso (models.Model):
     _name="odoo_basico.suceso" # Será o nome da táboa
     _description = "Modelo suceso"
-    _sql_constraints = [('nome unico', 'unique(name)', 'Non se pode repetir o Identificador')]
+    _sql_constraints = [('nome_unico', 'unique(name)', 'Non se pode repetir o Identificador')]
 
     name = fields.Char(required=True, size=20, string="Suceso")
     descripcion = fields.Text(string="A Descripción do Suceso")  # string é a etiqueta do campo
