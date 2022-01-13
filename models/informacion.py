@@ -48,17 +48,13 @@ class informacion (models.Model):
     creador_da_moeda = fields.Char(related="moeda_id.create_uid.login", string="Usuario creador da moeda", store=True)
 
 
-    def rexistra_log(self,ruta,arquivo,contido):
-        if os.path.exists(ruta):
-            with open(os.path.join(ruta, arquivo), 'a') as ficheiro:
-                ficheiro.write( fields.Datetime.now().strftime("%Y/%m/%d, %H:%M:%S") + " " + contido+ '\n')
-
-
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume(self):
         for rexistro in self:
             rexistro.volume = float(rexistro.alto_en_cms) * float(rexistro.longo_en_cms) * float(rexistro.ancho_en_cms)
-            self.rexistra_log("/home/antonio/logs", "probaVolume.log", "novo volume " + str(rexistro.volume))
+            miñasUtilidades.rexistra_log(self.convirte_data_hora_de_utc_a_timezone_do_usuario(fields.Datetime.now()).strftime("%Y/%m/%d, %H:%M:%S"),
+                                         miñasUtilidades.cadeaTextoSegunPlataforma('c:\\users\antonio\logs', '/home/antonio/logs'),
+                                         "probaVolume.log", "novo volume " + str(rexistro.volume))
 
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume_entre_100(self):
@@ -91,7 +87,7 @@ class informacion (models.Model):
         # Podemos cambialo con locale.setlocale, os idiomas teñen que estar instalados na máquina onde se executa odoo.
         # Lista onde podemos ver os distintos valores: https://docs.moodle.org/dev/Table_of_locales#Table
         # Definimos en miñasUtilidades un método para asignar o distinto literal que ten o idioma en función da plataforma Windows ou GNULinux
-        locale.setlocale(locale.LC_TIME, miñasUtilidades.idiomaSegunPlataforma('Spanish_Spain.1252','es_ES.utf8'))
+        locale.setlocale(locale.LC_TIME, miñasUtilidades.cadeaTextoSegunPlataforma('Spanish_Spain.1252','es_ES.utf8'))
         for rexistro in self:
             rexistro.mes_castelan = rexistro.data_hora.strftime("%B") # strftime https://strftime.org/
 
@@ -101,10 +97,10 @@ class informacion (models.Model):
         # Podemos cambialo con locale.setlocale, os idiomas teñen que estar instalados na máquina onde se executa odoo.
         # Lista onde podemos ver os distintos valores: https://docs.moodle.org/dev/Table_of_locales#Table
         # Definimos en miñasUtilidades un método para asignar o distinto literal que ten o idioma en función da plataforma Windows ou GNULinux
-        locale.setlocale(locale.LC_TIME, miñasUtilidades.idiomaSegunPlataforma('Galician_Spain.1252', 'gl_ES.utf8'))
+        locale.setlocale(locale.LC_TIME, miñasUtilidades.cadeaTextoSegunPlataforma('Galician_Spain.1252', 'gl_ES.utf8'))
         for rexistro in self:
             rexistro.mes_galego = rexistro.data_hora.strftime("%B")
-        locale.setlocale(locale.LC_TIME, miñasUtilidades.idiomaSegunPlataforma('Spanish_Spain.1252', 'es_ES.utf8'))
+        locale.setlocale(locale.LC_TIME, miñasUtilidades.cadeaTextoSegunPlataforma('Spanish_Spain.1252', 'es_ES.utf8'))
 
     @api.depends('data_hora')
     def _hora_utc(self):
