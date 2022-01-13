@@ -5,6 +5,8 @@ from odoo.exceptions import ValidationError
 from odoo.exceptions import Warning
 import pytz
 import locale
+import os
+from . import miñasUtilidades
 
 class informacion (models.Model):
     _name="odoo_basico.informacion" # Será o nome da táboa
@@ -46,11 +48,17 @@ class informacion (models.Model):
     creador_da_moeda = fields.Char(related="moeda_id.create_uid.login", string="Usuario creador da moeda", store=True)
 
 
+    def rexistra_log(self,ruta,arquivo,contido):
+        if os.path.exists(ruta):
+            with open(os.path.join(ruta, arquivo), 'a') as ficheiro:
+                ficheiro.write( fields.Datetime.now().strftime("%Y/%m/%d, %H:%M:%S") + " " + contido+ '\n')
+
 
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume(self):
         for rexistro in self:
             rexistro.volume = float(rexistro.alto_en_cms) * float(rexistro.longo_en_cms) * float(rexistro.ancho_en_cms)
+            self.rexistra_log("/home/antonio/logs", "probaVolume.log", "novo volume " + str(rexistro.volume))
 
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume_entre_100(self):
@@ -82,8 +90,8 @@ class informacion (models.Model):
         # O idioma por defecto é o configurado en locale na máquina onde se executa odoo.
         # Podemos cambialo con locale.setlocale, os idiomas teñen que estar instalados na máquina onde se executa odoo.
         # Lista onde podemos ver os distintos valores: https://docs.moodle.org/dev/Table_of_locales#Table
-        locale.setlocale(locale.LC_TIME,'es_ES.utf8') # Para GNU/Linux
-        #locale.setlocale(locale.LC_TIME, 'Spanish_Spain.1252')  # Para Windows
+        # Definimos en miñasUtilidades un método para asignar o distinto literal que ten o idioma en función da plataforma Windows ou GNULinux
+        locale.setlocale(locale.LC_TIME, miñasUtilidades.idiomaSegunPlataforma('Spanish_Spain.1252','es_ES.utf8'))
         for rexistro in self:
             rexistro.mes_castelan = rexistro.data_hora.strftime("%B") # strftime https://strftime.org/
 
@@ -92,12 +100,11 @@ class informacion (models.Model):
         # O idioma por defecto é o configurado en locale na máquina onde se executa odoo.
         # Podemos cambialo con locale.setlocale, os idiomas teñen que estar instalados na máquina onde se executa odoo.
         # Lista onde podemos ver os distintos valores: https://docs.moodle.org/dev/Table_of_locales#Table
-        locale.setlocale(locale.LC_TIME,'gl_ES.utf8')  # Para GNU/Linux
-        #locale.setlocale(locale.LC_TIME, 'Galician_Spain.1252')  # Para Windows
+        # Definimos en miñasUtilidades un método para asignar o distinto literal que ten o idioma en función da plataforma Windows ou GNULinux
+        locale.setlocale(locale.LC_TIME, miñasUtilidades.idiomaSegunPlataforma('Galician_Spain.1252', 'gl_ES.utf8'))
         for rexistro in self:
             rexistro.mes_galego = rexistro.data_hora.strftime("%B")
-        locale.setlocale(locale.LC_TIME, 'es_ES.utf8')  # Para GNU/Linux
-        #locale.setlocale(locale.LC_TIME, 'Spanish_Spain.1252')  # Para Windows
+        locale.setlocale(locale.LC_TIME, miñasUtilidades.idiomaSegunPlataforma('Spanish_Spain.1252', 'es_ES.utf8'))
 
     @api.depends('data_hora')
     def _hora_utc(self):
@@ -139,7 +146,8 @@ class informacion (models.Model):
 
     def ver_contexto(self): # Este método é chamado dende un botón de informacion.xml
         for rexistro in self: #Ao usar warning temos que importar a libreria from odoo.exceptions import Warning
-            raise Warning('Contexto: %s' % rexistro.env.context) #env.context é un diccionario  https://www.w3schools.com/python/python_dictionaries.asp
+            raise Warning('Contexto: %s Ruta: %s Contido %s' % (rexistro.env.context, os.getcwd(),os.listdir(os.getcwd()))) #env.context é un diccionario  https://www.w3schools.com/python/python_dictionaries.asp
+            #raise Warning('Contexto: %s' % rexistro.env.context)  # env.context é un diccionar
         return True
 
     def _cambia_campo_sexo(self, rexistro):
