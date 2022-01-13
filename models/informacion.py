@@ -145,9 +145,11 @@ class informacion (models.Model):
             rexistro.actualiza_hora_actual_UTC()
 
     def ver_contexto(self): # Este método é chamado dende un botón de informacion.xml
-        for rexistro in self: #Ao usar warning temos que importar a libreria from odoo.exceptions import Warning
-            raise Warning('Contexto: %s Ruta: %s Contido %s' % (rexistro.env.context, os.getcwd(),os.listdir(os.getcwd()))) #env.context é un diccionario  https://www.w3schools.com/python/python_dictionaries.asp
-            #raise Warning('Contexto: %s' % rexistro.env.context)  # env.context é un diccionar
+        for rexistro in self:
+            #Ao usar warning temos que importar a libreria mediante from odoo.exceptions import Warning
+            #Importamos tamén a libreria os mediante import os
+            raise Warning('Contexto: %s Ruta: %s Contido %s' % (rexistro.env.context, os.getcwd(),os.listdir(os.getcwd())))
+            #env.context é un diccionario  https://www.w3schools.com/python/python_dictionaries.asp
         return True
 
     def _cambia_campo_sexo(self, rexistro):
