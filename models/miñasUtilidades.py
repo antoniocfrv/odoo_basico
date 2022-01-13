@@ -14,6 +14,6 @@ def rexistra_log(diaHora,ruta,arquivo,contido):
     if os.path.exists(ruta):
         # a Ruta ten que existir e previamente terlle concedidos permisos a odoo para poder facer modificacións
         with open(os.path.join(ruta, arquivo), 'a') as ficheiro:
-            ficheiro.write(diaHora + " " + contido + cadeaTextoSegunPlataforma('\rn','\n'))
+            ficheiro.write(diaHora + " " + contido + cadeaTextoSegunPlataforma('\r\n','\n'))
 
 
