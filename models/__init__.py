@@ -2,5 +2,5 @@
 
 
 from . import informacion, pedido, lineapedido, suceso,inicial
-from . import accion_planificada
+from . import accion_planificada, miñasUtilidades
 #from . import persoa
