@@ -54,7 +54,8 @@ class informacion (models.Model):
             rexistro.volume = float(rexistro.alto_en_cms) * float(rexistro.longo_en_cms) * float(rexistro.ancho_en_cms)
             miñasUtilidades.rexistra_log(self.convirte_data_hora_de_utc_a_timezone_do_usuario(fields.Datetime.now()).strftime("%Y/%m/%d, %H:%M:%S"),
                                          miñasUtilidades.cadeaTextoSegunPlataforma('c:\\users\\antonio\\logs', '/home/antonio/logs'),
-                                         "probaVolume.log", "novo volume " + str(rexistro.volume))
+                                         "probaVolume.log",
+                                         miñasUtilidades.determinaUsuarioSegunContexto(self,rexistro.env.context) + " novo volume " + str(rexistro.volume))
 
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume_entre_100(self):

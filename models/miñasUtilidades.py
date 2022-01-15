@@ -23,6 +23,11 @@ def rexistra_log(diaHora,ruta,arquivo,contido):
         # except OSError:
         #     pass
 
-
+def determinaUsuarioSegunContexto(selfie,contexto):
+    if "uid" in contexto:
+        usuario = selfie.env['res.users'].search([('id', '=', str(contexto["uid"]))])[0].partner_id.display_name
+    else:
+        usuario = "Templates"
+    return usuario
 
 
